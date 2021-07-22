@@ -22,10 +22,26 @@ const SignUp = () => {
 
     const [disabled, setDisabled] = useState(true)
 
+    const [errors, setErrors] = useState({
+        name: '',
+        email: '',
+        username: '',
+        password: '',
+        terms: false,
+    })
+
+    //Form Errors
+    const setFormErrors = (name, value) => {
+        yup.reach(schema, name).validate(value)
+            .then(() => setErrors({ ...errors, [name]: '' }))
+            .catch(err => setErrors({ ...errors, [name]: err.errors[0] }))
+    }
+
     //Change Handler
     const change = event => {
         const { checked, value, name, type } = event.target
         const valueToUse = type === 'checkbox' ? checked : value
+        setFormErrors(name, valueToUse)
         setForm({ ...form, [name]: valueToUse })
     }
 
@@ -71,6 +87,14 @@ const SignUp = () => {
                 <button disabled={disabled}>Submit</button>
 
             </form>
+
+            <div style={{ color: 'red'}}>
+                <div>{errors.name}</div>
+                <div>{errors.email}</div>
+                <div>{errors.username}</div>
+                <div>{errors.password}</div>
+                <div>{errors.terms}</div>
+            </div>
         </div>
     )
 }
