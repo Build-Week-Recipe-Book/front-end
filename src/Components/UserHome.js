@@ -1,11 +1,9 @@
 import React from 'react'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import photo from './FoodPhoto2.jpg'
  
 function UserHome() {
-
-    const { url } = useRouteMatch()
 
     return (
         <HomeDiv>
@@ -14,8 +12,8 @@ function UserHome() {
             <MainImg src = {photo} alt = 'Food Photo' />
             <br/>
             <ButtonDiv>
-                <Link to = {`${url}create-recipe`}><Button id = "create-recipe">Create Recipe</Button></Link>
-                <Link to = {`${url}view-recipes`}><Button id = "view-recipes">View Recipes</Button></Link>
+                <Link to = {`/create-recipe`}><Button id = "create-recipe">Create Recipe</Button></Link>
+                <Link to = {`/view-recipes`}><Button id = "view-recipes">View Recipes</Button></Link>
             </ButtonDiv>
         </HomeDiv>
     )
