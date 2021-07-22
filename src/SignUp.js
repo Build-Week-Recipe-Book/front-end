@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
+import axios from 'axios';
 
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
@@ -45,6 +46,19 @@ const SignUp = () => {
         setForm({ ...form, [name]: valueToUse })
     }
 
+    //Submit Handler
+    const submit = event => {
+        event.preventDefault()
+        const newUser = {name: form.name.trim(), email: form.email.trim(), username: form.username.trim(), password: form.password.trim(), terms: form.terms }
+        axios.post('https://reqres.in/api/users', newUser)
+            .then(res => {
+                console.log('post request working')
+            })
+            .catch(() => {
+                console.log('post request did not work')
+            })
+    }
+
     //Schema Verification
     useEffect(() => {
         schema.isValid(form).then(valid => setDisabled(!valid))
@@ -52,7 +66,7 @@ const SignUp = () => {
 
     return (
         <div className='formContainer'>
-            <form>
+            <form onSubmit={submit}>
 
                 <label>Name:
                     <input type='text' name='name' value={form.name} onChange={change} />
