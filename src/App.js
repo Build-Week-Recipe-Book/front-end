@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route id = 'sign-up' path = "/sign-up"
+        <Route id = 'sign-up' path = "/sign-up">
           <SignUp />
         </Route>
         <Route id = 'home' path="/">

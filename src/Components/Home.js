@@ -15,7 +15,7 @@ function Home() {
             <br/>
             <ButtonDiv>
                 <Link to = {`${url}login`}><Button id = "login-button">Login</Button></Link>
-                <Link to = {`${url}create-account`}><Button id = "create-account">Create Account</Button></Link>
+                <Link to = {`${url}sign-up`}><Button id = "sign-up">Sign Up</Button></Link>
             </ButtonDiv>
         </HomeDiv>
     )
