@@ -1,4 +1,10 @@
 import React, { useState } from 'react'
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+    username: yup.string().required('Username is required for login').min(4, 'Username must be at least 4 characters'),
+    password: yup.string().required('Password is required for login').min(8, 'Password must be at least 8 characters')
+})
 
 const Login = () => {
 

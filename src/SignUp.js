@@ -5,7 +5,7 @@ import axios from 'axios';
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
     email: yup.string().required('Email is required').min(11, 'Email must be at least 11 characters'),
-    username: yup.string().required('Username is required').min(4, 'Username must be atleast 4 characters'),
+    username: yup.string().required('Username is required').min(4, 'Username must be at least 4 characters'),
     password: yup.string().required('Password is required').min(8, 'Password must be at least 8 characters'),
     terms: yup.boolean().oneOf([true], 'You must agree to the Terms of Service'),
 })
