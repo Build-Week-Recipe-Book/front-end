@@ -3,34 +3,19 @@ import React, { useState } from 'react'
 
 function CreateRecipe() {
 
-    const [ingredients, setIngredients] = useState([{ value: null }])
-    const [instructions, setInstructions] = useState([{ value: null }])
-    const [newTitle, setNewTitle] = useState('')
-    const [newSource, setNewSource] = useState('')
-    const [newCategory, setNewCategory] = useState('')
+    const [ ingredients, setIngredients ] = useState([{ value: null }])
+    const [ instructions, setInstructions ] = useState([{ value: null }])
+    const [ title, setTitle ] = useState('')
+    const [ source, setSource ] = useState('')
+    const [ category, setCategory ] = useState('')
 
-    const [recipe, setRecipe] = useState({
+    const [ recipeValues, setRecipeValues ] = useState({
         title: '',
         source: '',
         ingredients: [],
         instructions: [],
         category: ''
     })
-
-    const titleOnChange = evt => {
-        const data = evt.target.value
-        setNewTitle(data)
-    }
-
-    const sourceOnChange = evt => {
-        const data = evt.target.value
-        setNewSource(data)
-    }
-
-    const categoryOnChange = evt => {
-        const data = evt.target.value
-        setNewCategory(data)
-    }
 
     function handleChange(i, event) {
         const values = [...ingredients];
@@ -68,28 +53,27 @@ function CreateRecipe() {
         setInstructions(values);
     }
 
-    function onSubmit(newTitle, newSource, ingredients, instructions, newCategory) {
-        setRecipe({
-            title: newTitle,
-            source: newSource,
-            ingredients: [ingredients],
-            instructions: [instructions],
-            category: [newCategory]
-        }
-        )
-        console.log(recipe)
-        axios.post('/api/recipes', recipe)
+    function onClick() {
+        setRecipeValues({
+            title: title,
+            source: source,
+            ingredients: ingredients,
+            instructions: instructions,
+            category: category
+        })
+        console.log(recipeValues)
+        axios.post('/api/recipes', recipeValues)
             .then(res => console.log(res))
-            .err(err => console.log(err))
+            .catch(err => console.log(err))
     }
 
     return(
         <div>
             <h2>Here you can enter the details of your recipe.</h2>
             <div>
-                <form id = "new-recipe">
-                    <p>Recipe Name: <input id="title" name = "title" type = "text" onChange = {titleOnChange} /></p>
-                    <p>Recipe Source: <input id = "source" name = "source" type = "text" onChange = {sourceOnChange} /></p>
+                <form id = "new-recipe" >
+                    <p>Recipe Name: <input id="title" name = "title" type = "text"  onChange = { (evt) => setTitle(evt.target.value)} /></p>
+                    <p>Recipe Source: <input id = "source" name = "source" type = "text"  onChange = { (evt) => setSource(evt.target.value)} /></p>
                     <p>Add Ingredients <button type = "button" onClick = {() => handleAdd()}> -+- </button></p>
                     {ingredients.map((ingredient, id) => {
                         return(
@@ -118,7 +102,7 @@ function CreateRecipe() {
                             </div>
                         )
                     })}
-                    <p>Category: <select id = "category" name = "category" onChange={categoryOnChange} >
+                    <p>Category: <select id = "category" name = "category" onChange = { (evt) => setCategory( evt.target.value )} >
                         <option value = ''>--Select Category--</option>
                         <option value = 'appetizer'>Appetizer</option>
                         <option value = 'poultry'>Poultry</option>
@@ -129,7 +113,7 @@ function CreateRecipe() {
                     </select></p>
                     <br/>
                     <br/>
-                    <button onSubmit = {onSubmit} >Submit</button>
+                    <button type = "button" onClick = { onClick } >Submit</button>
                 </form>
             </div>
         </div>
