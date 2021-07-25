@@ -32,6 +32,7 @@ height: 100vh;
 
 const MainImg = styled.img`
 height: 65vh;
+border-radius: 5%;
 `
 
 const ButtonDiv = styled.div`

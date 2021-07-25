@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import * as yup from 'yup';
 import axios from 'axios';
+import photo from './Components/FoodPhoto4.jpg'
+import styled from 'styled-components'
 
 const schema = yup.object().shape({
     username: yup.string().required('Username is required for login').min(4, 'Username must be at least 4 characters'),
@@ -60,9 +62,9 @@ const Login = () => {
     }, [form])
 
     return (
-        <div className='formContainer'>
+        <HomeDiv className='formContainer'>
             
-            <form onSubmit={submit}>
+            <Form onSubmit={submit}>
 
                 <label>Username:
                     <input type='text' name='username' value={form.username} onChange={change} />
@@ -80,17 +82,47 @@ const Login = () => {
                     <input type='checkbox' name='remember' checked={form.remember} onChange={change} />
                 </label>
 
-                <button disabled={disabled}>Login</button>
+                <Button disabled={disabled}>Login</Button>
 
-            </form>
+            </Form>
 
             <div style={{ color: 'red' }}>
                 <div>{errors.username}</div>
                 <div>{errors.password}</div>
             </div>
 
-        </div>
+        </HomeDiv>
     )
 }
+
+const HomeDiv = styled.div`
+display: flex;
+justify-content: start;
+align-items: center;
+flex-direction: column;
+width: 100%;
+height: 100vh;
+padding: 7% 0;
+background-image: url(${photo});
+`
+
+const Button = styled.button`
+background: maroon;
+color: white;
+height: 30px;
+border-radius: 5px;
+`
+
+const Form = styled.form`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background: white;
+padding: 2%;
+border: solid 3px black;
+border-radius: 5%;
+opacity: 0.90;
+`
 
 export default Login
