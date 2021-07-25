@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
+import styled from 'styled-components'
+import photo from './Components/FoodPhoto3.jpg'
 
 const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
@@ -65,42 +67,47 @@ const SignUp = () => {
     }, [form])
 
     return (
-        <div className='formContainer'>
-            <form onSubmit={submit}>
+        <HomeDiv className='formContainer'>
+            <Form onSubmit={submit}>
 
                 <label>Name:
                     <input type='text' name='name' value={form.name} onChange={change} />
                 </label>
 
-                <br />
+                <br/>
+                <br/>
 
                 <label>Email:
                     <input type='text' name='email' value={form.email} onChange={change} />
                 </label>
 
-                <br />
+                <br/>
+                <br/>
 
                 <label>Username:
                     <input type='text' name='username' value={form.username} onChange={change} />
                 </label>
 
                 <br />
+                <br/>
 
                 <label>Password:
                     <input type='text' name='password' value={form.password} onChange={change} />
                 </label>
 
                 <br />
+                <br/>
 
                 <label>Terms of Service:
                     <input type='checkbox' name='terms' checked={form.terms} onChange={change} />
                 </label>
 
                 <br />
+                <br/>
 
-                <button disabled={disabled}>Submit</button>
+                <Button disabled={disabled}>Submit</Button>
 
-            </form>
+            </Form>
 
             <div style={{ color: 'red'}}>
                 <div>{errors.name}</div>
@@ -109,8 +116,38 @@ const SignUp = () => {
                 <div>{errors.password}</div>
                 <div>{errors.terms}</div>
             </div>
-        </div>
+        </HomeDiv>
     )
 }
+
+const HomeDiv = styled.div`
+display: flex;
+justify-content: start;
+align-items: center;
+flex-direction: column;
+width: 100%;
+height: 100vh;
+padding: 7% 0;
+background-image: url(${photo});
+`
+
+const Button = styled.button`
+background: maroon;
+color: white;
+height: 30px;
+border-radius: 5px;
+`
+
+const Form = styled.form`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+background: white;
+padding: 2%;
+border: solid 3px black;
+border-radius: 5%;
+opacity: 0.90;
+`
 
 export default SignUp
