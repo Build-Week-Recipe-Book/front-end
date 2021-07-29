@@ -7,6 +7,7 @@ import Login from './Login';
 import UserHome from './Components/UserHome';
 import CreateRecipe from './Components/Create-Recipe'
 import Nav from './Components/Nav'
+import RecipeCard from './Components/RecipeCard';
 import { ItemContext } from './Components/Context/ItemContext';
 
 function App() {
@@ -29,6 +30,10 @@ function App() {
         <Route id = 'create-recipe' path = "/create-recipe">
           <Nav />
           <CreateRecipe />
+        </Route>
+        <Route id = 'view-recipe' path = "/view-recipes">
+          <Nav />
+          <RecipeCard />
         </Route>
         <Route id = 'home' path="/">
           <Nav />
