@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useRouteMatch } from 'react-router-dom'
 import styled from 'styled-components'
-import photo from './FoodPhoto.jpg'
+import photo from './img/FoodPhoto.jpg'
  
 function Home() {
 

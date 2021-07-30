@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import photo from './FoodPhoto5.jpg'
+import photo from './img/FoodPhoto5.jpg';
 
 function CreateRecipe() {
 

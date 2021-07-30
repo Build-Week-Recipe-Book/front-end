@@ -2,13 +2,14 @@ import React from 'react'
 import './App.css'
 import Home from './Components/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import SignUp from './SignUp';
-import Login from './Login';
+import './Components/Registration/SignUp';
+import Login from './Components/Registration/Login';
 import UserHome from './Components/UserHome';
 import CreateRecipe from './Components/Create-Recipe'
 import Nav from './Components/Nav'
 import RecipeCard from './Components/RecipeCard';
 import { ItemContext } from './Components/Context/ItemContext';
+import SignUp from './Components/Registration/SignUp';
 
 function App() {
 
