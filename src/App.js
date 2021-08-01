@@ -13,35 +13,37 @@ import SignUp from './Components/Registration/SignUp';
 
 function App() {
 
+
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route id = 'login-button' path = "/login">
-          <Nav />
-          <Login />
-        </Route>
-        <Route id = 'sign-up' path = "/sign-up">
-          <Nav />
-          <SignUp />
-        </Route>
-        <Route id = 'user-home' path = "/user-home">
-          <Nav />
-          <UserHome />
-        </Route>
-        <Route id = 'create-recipe' path = "/create-recipe">
-          <Nav />
-          <CreateRecipe />
-        </Route>
-        <Route id = 'view-recipe' path = "/view-recipes">
-          <Nav />
-          <RecipeCard />
-        </Route>
-        <Route id = 'home' path="/">
-          <Nav />
-          <Home />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Switch>
+          <Route id = 'login-button' path = "/login">
+            <Nav />
+            <Login />
+          </Route>
+          <Route id = 'sign-up' path = "/sign-up">
+            <Nav />
+            <SignUp />
+          </Route>
+          <Route id = 'user-home' path = "/user-home">
+            <Nav />
+            <UserHome />
+          </Route>
+          <Route id = 'create-recipe' path = "/create-recipe">
+            <Nav />
+            <CreateRecipe />
+          </Route>
+          <Route id = 'view-recipe' path = "/view-recipes">
+            <Nav />
+            <RecipeCard />
+          </Route>
+          <Route id = 'home' path="/">
+            <Nav />
+            <Home />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+
   )
 }
 

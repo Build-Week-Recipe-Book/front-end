@@ -69,12 +69,22 @@ function CreateRecipe() {
             .catch(err => console.log(err))
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('https://usemytechstuff3.herokuapp.com/api/products', recipeValues)
+            .then(res => {
+                console.log("AXIOS - POST RESPONSE: ", res)
+                setRecipeValues(res.data);
+            })
+            .catch(err => console.log('Failed to add item', err));
+    }
+
     return(
         <HomeDiv>
             <LeftDiv>
                 <h2>Here you can enter the details of your recipe.</h2>
                 <div>
-                    <Form id = "new-recipe" >
+                    <Form onSubmit={handleSubmit} id = "new-recipe" >
                         <p>Recipe Name: <input id="title" name = "title" type = "text"  onChange = { (evt) => setTitle(evt.target.value)} /></p>
                         <p>Recipe Source: <input id = "source" name = "source" type = "text"  onChange = { (evt) => setSource(evt.target.value)} /></p>
                         <p>Add Ingredients <button type = "button" onClick = {() => handleAdd()}> -+- </button></p>
@@ -131,13 +141,13 @@ const HomeDiv = styled.div`
 display: flex;
 justify-content: center;
 flex-direction: row;
-width: 75%;
+width: 100%;
 height: 100vh;
 padding: 0 12.5%;
 `
 
 const LeftDiv = styled.div`
-width: 50%;
+width: 100%;
 padding: 5% 7.5%;
 `
 
