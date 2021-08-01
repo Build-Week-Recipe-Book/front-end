@@ -12,7 +12,7 @@ export default class RecipeCard extends Component {
             .then(res => res.json())
             .then((data) => {
                 let info = data.data;
-                // console.log(info)
+                console.log(info)
                 this.setState({ recipes: info })
             })
             .catch(console.log)
